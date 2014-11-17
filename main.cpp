@@ -2,12 +2,12 @@
 
 int main() {
 	
-	Graph G(5);
+	Graph G(4);
 	
-	int Florence = 0;
-	int Huntsville = 1;
-	
-	G.insertEdge(0, 1, 60);
+	G.insertEdge(0, 1, 1);
+	G.insertEdge(0, 3, 5);
+	G.insertEdge(1, 4, 1);
+	G.insertEdge(3, 4, 5);
 		
 	return 0;
 }

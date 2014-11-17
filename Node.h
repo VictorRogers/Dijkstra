@@ -15,6 +15,7 @@ public:
 
 	// Friends
 	friend class PriorityQueue;
+	friend class Graph;
 
 	// Mutators
 	

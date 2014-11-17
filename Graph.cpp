@@ -1,4 +1,5 @@
 #include "Graph.h"
+#include <climits>
 
 
 //=============================================================================
@@ -17,15 +18,21 @@ Graph::Graph(){}
 // Function: Overloaded Constructor
 // Parameters: (int vertexCount)
 // Description: Initializes adjacencyMatrix as a symmetric matrix of size
-//				vertexCount^2;
+//				vertexCount^2. 
+//				All distances are initialized to infinity and previous 
+//				vertices are set to null.
 // TODO:
 //=============================================================================
 Graph::Graph(int vertexCount) {
 	this->vertexCount = vertexCount;
 	vertexContainer = new Node[vertexCount];
-	
 	adjacencyMatrix = new int*[vertexCount];
+	dist = new int[vertexCount];
+	prev = new int[vertexCount];
+	prev;
 	for (int i = 0; i < vertexCount; i++) {
+		dist[i] = INT_MAX;
+		prev[i] = -1;
 		adjacencyMatrix[i] = new int[vertexCount];
 		for (int j = 0; j < vertexCount; j++)
 			adjacencyMatrix[i][j] = false;
@@ -56,6 +63,27 @@ Graph::~Graph() {
 	for (int i = 0; i < vertexCount; i++)
 		delete [] adjacencyMatrix[i];
 	delete [] adjacencyMatrix;
+	delete [] dist;
+	delete [] prev;
+}
+//=============================================================================
+
+
+//=============================================================================
+// Class: Graph
+// Function: insertEdge
+// Parameters: (int i , int j)
+// Description: Adds an undirected edge to the graph. 
+// TODO: 
+//=============================================================================
+void Graph::dijkstra(int source, int destination) {
+	for (int i = 0; i < vertexCount; i++) {
+		dist[i] = INT_MAX;
+		prev[i] = -1;
+	}
+	dist[source] = 0;
+	
+	
 }
 //=============================================================================
 

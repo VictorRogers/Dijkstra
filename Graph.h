@@ -21,16 +21,18 @@ public:
 	void removeEdge(int i, int j, int weight);
 
 	// Accessors
-	void dijkstra();
+	void dijkstra(int source, int destination);
 	void findShortestPath();
 	bool isEdge(int i, int j) const;
 	bool adjacent(int vertexA, int vertexB) const;
 	void neighbors(int vertex) const;
 
 private:
-	int ** adjacencyMatrix;
-	Node * vertexContainer;
 	int vertexCount;
+	int ** adjacencyMatrix;
+	int * dist;
+	int * prev;
+	Node * vertexContainer;
 };
 //=============================================================================
 
