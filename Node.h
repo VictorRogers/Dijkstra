@@ -11,7 +11,6 @@ class Node{
 public:
 	// Constructors - Overloading
 	Node();
-	Node(int priority);
 	~Node();
 
 	// Friends

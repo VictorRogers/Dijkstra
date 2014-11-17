@@ -47,7 +47,7 @@ void PriorityQueue::insert(Node * element) {
 	int current = minHeap.size() - 1;
 	int parent = (current - 1) / 2;
 	
-	while (parent >= 0 && minHeap[current]->priority < minHeap[parent]->priority) { // upHeap operations
+	while (parent >= 0 && minHeap[current]->cost < minHeap[parent]->cost) { // upHeap operations
 		swap(parent, current);
 		current = parent;
 		parent = (current - 1) / 2;
@@ -75,18 +75,18 @@ Node * PriorityQueue::pull() {
 			downHeap = false;
 		}
 		else if ((2 * current) + 2 >= minHeap.size()) { // Case 2: If there is no right child
-			if (minHeap[current]->priority > minHeap[2 * current + 1]->priority) { //If parent is greater than left child
+			if (minHeap[current]->cost > minHeap[2 * current + 1]->cost) { //If parent is greater than left child
 				swap(current, (2 * current + 1)); 
 				current = 2 * current + 1; // Move current down the heap
 			}
 			downHeap = false;  // Bottom of heap is reached
 		}
 		else { // Case 3: There is two children
-			if (minHeap[current]->priority > minHeap[2 * current + 1]->priority) { // 3a: Left child is the smallest
+			if (minHeap[current]->cost > minHeap[2 * current + 1]->cost) { // 3a: Left child is the smallest
 				swap(current, 2 * current + 1);
 				current = 2 * (current + 1);
 			}
-			else if (minHeap[current]->priority > minHeap[2 * current + 2]->priority) { // 3b: Right child is the smallest
+			else if (minHeap[current]->cost > minHeap[2 * current + 2]->cost) { // 3b: Right child is the smallest
 				swap(current, 2 * current + 2);
 				current = 2 * current + 2;
 			}
@@ -150,6 +150,6 @@ Node * PriorityQueue::peek() const {
 //=============================================================================
 void PriorityQueue::printHeap() const {
 	for (unsigned int i = 0; i < minHeap.size(); i++)
-		std::cout << minHeap[i]->priority << std::endl;
+		std::cout << minHeap[i]->cost << std::endl;
 }
 //=============================================================================

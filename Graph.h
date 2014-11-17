@@ -1,6 +1,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+#include "Node.h"
 
 //=============================================================================
 // Class: Graph
@@ -16,19 +17,20 @@ public:
 	~Graph();
 
 	// Mutators
-	void insertVertex();
-	void deleteVertex();	
-	void insertEdge(int i, int j);
-	void removeEdge(int i, int j);
-	
+	void insertEdge(int i, int j, int weight);
+	void removeEdge(int i, int j, int weight);
+
 	// Accessors
+	void dijkstra();
 	void findShortestPath();
 	bool isEdge(int i, int j) const;
-	
+	bool adjacent(int vertexA, int vertexB) const;
+	void neighbors(int vertex) const;
+
 private:
-	bool ** adjacencyMatrix;
+	int ** adjacencyMatrix;
+	Node * vertexContainer;
 	int vertexCount;
-	enum vertexState {White, Gray, Black};
 };
 //=============================================================================
 
